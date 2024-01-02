@@ -11,12 +11,12 @@ export default function (props) {
 
   function handleError() {}
   return (
-    <div className="flex flex-col items-center pt-8 gap-4 max-w-[280px] w-[80%] border-white border-2 ">
+    <div className="flex flex-col items-center gap-4 max-w-[280px] w-[80%] border-white border-2 ">
       <img
         onLoad={handleImgLoading}
-        className={`${hasLoaded ? "block" : "hidden"} max-h-[150px]`}
+        className={`${hasLoaded ? "block" : "hidden"} max-h-[150px] w-full`}
         src={props.flag}
-        alt="no image to show"
+        alt={props.alt}
         onError={handleError}
       />
       <div className={`${hasLoaded ? "hidden" : "flex"} loader`}></div>

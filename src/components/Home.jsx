@@ -31,7 +31,8 @@ export default function Home() {
               population={country.population}
               region={country.continents.join(", ")}
               capital={country.capital}
-              flag={country.coatOfArms.png}
+              flag={country.flags.png}
+              alt = {country.flags.alt}
             />
           );
         });
