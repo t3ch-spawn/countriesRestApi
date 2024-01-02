@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import britain from "../assets/britain.png";
 
 export default function (props) {
   const [hasLoaded, setHasLoaded] = useState(null);
 
   function handleImgLoading(e) {
     console.log(e.target.alt);
-    console.log(e.target.src)
+    console.log(e.target.src);
     if (e.target.src) {
       setHasLoaded(true);
     }
