@@ -10,6 +10,23 @@
   height: 100%;
 }
 
+.loader-big {
+  position: relative;
+  height: 150px;
+  width: 150px;
+}
+
+.loader-big::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: 12px solid white;
+  border-top-color: black;
+  border-radius: 50%;
+  animation: spinLoader 0.7s infinite;
+}
+
 .loader {
   position: relative;
   height: 50px;
