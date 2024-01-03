@@ -101,3 +101,11 @@
   z-index: 10;
   padding: 0;
 }
+
+body{
+  overflow: hidden;
+}
+
+body.active {
+  overflow: auto;
+}

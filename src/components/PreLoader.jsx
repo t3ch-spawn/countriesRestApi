@@ -44,6 +44,7 @@ export default function PreLoader() {
                 .querySelectorAll(".preloader-container").forEach((loader)=>{
                     loader.classList.add("active");
                 })
+                document.querySelector('body').classList.add('active')
                 
             },
             ease: "power4.out",
