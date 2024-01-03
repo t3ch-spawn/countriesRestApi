@@ -11,7 +11,7 @@ export default function (props) {
 
   function handleError() {}
   return (
-    <div className="flex flex-col items-center gap-4 max-w-[280px] w-[80%] border-white border-2 ">
+    <div className="flex flex-col items-start  max-w-[280px] w-[80%] bg-cardBg shadow-xl rounded-md cursor-pointer overflow-hidden">
       <img
         onLoad={handleImgLoading}
         className={`${hasLoaded ? "block" : "hidden"} max-h-[150px] w-full`}
@@ -23,7 +23,7 @@ export default function (props) {
 
       {/* div containig details of the country */}
       <div className="flex flex-col gap-2 p-8">
-        <h2>{props.name}</h2>
+        <h2 className="text-2xl font-bold">{props.name}</h2>
         <p>Population: {props.population}</p>
         <p>Region: {props.region}</p>
         <p>Capital: {props.capital}</p>

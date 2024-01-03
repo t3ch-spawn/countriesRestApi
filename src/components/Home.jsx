@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import Country_card from "./Country_card";
 import axios from "axios";
 import FilterCountry from "./FilterCountry";
+import Header from "./Header";
 
 export default function Home() {
   const [allCountries, setAllCountries] = useState(null);
   const [hasFetched, setHasFetched] = useState(false);
   const [countriesArray, setCountriesArray] = useState([]);
+  const [region, setRegion] = useState("");
 
   // This UseEffect fetches the countries from the api
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function Home() {
               region={country.continents.join(", ")}
               capital={country.capital}
               flag={country.flags.png}
-              alt = {country.flags.alt}
+              alt={country.flags.alt}
             />
           );
         });
@@ -64,11 +66,15 @@ export default function Home() {
 
   function handleRegion(e) {
     let searchedRegion = e.target.textContent;
+    if (searchedRegion == "Clear filters") {
+      setRegion("");
+      return;
+    }
     setHasFetched(false);
+    setRegion(searchedRegion);
     axios
       .get(`https://restcountries.com/v3.1/region/${searchedRegion}`)
       .then((res) => {
-        console.log(res.data);
         setAllCountries(res.data);
         setHasFetched(true);
       })
@@ -80,13 +86,17 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-center p-[40px] flex-wrap w-full ">
-      <div>
+    <div className="flex flex-col gap-8 justify-center items-center p-[40px] flex-wrap w-full">
+      {/* Div which houses the search box and filter dropdown */}
+      <div className="w-full flex justify-between items-center -750:flex-col -750:items-start -750:gap-4">
         {/* Input text box that filters throught the countries */}
         <input
           type="text"
           onInput={searchCountries}
-          placeholder="Search for a country"
+          placeholder={`Search for a country ${
+            region ? `in ${region}...` : "..."
+          }`}
+          className="w-full h-fit max-w-[500px] p-3 bg-cardBg"
         />
 
         <FilterCountry getRegion={handleRegion} />
