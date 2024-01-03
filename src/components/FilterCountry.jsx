@@ -19,7 +19,7 @@ export default function FilterCountry(props) {
       >
         <p>{mainText}</p>
 
-        <i class={` ${toggle ? "active" : ""} fa-solid fa-angle-down`}></i>
+        <i className={` ${toggle ? "active" : ""} fa-solid fa-angle-down`}></i>
       </div>
 
       <div
@@ -49,6 +49,7 @@ export default function FilterCountry(props) {
               handleToggle();
               setMainText("Filter by Region");
               props.getRegion(e);
+              document.querySelector(".search-box").value = "";
             }}
             className="cursor-pointer px-2 py-2 hover:bg-mainBg bg-cardBg text-[red]"
           >

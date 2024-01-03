@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Country_card from "./Country_card";
-import axios from "axios";
+import axios, { all } from "axios";
 import FilterCountry from "./FilterCountry";
 import Header from "./Header";
 
@@ -10,22 +10,27 @@ export default function Home() {
   const [countriesArray, setCountriesArray] = useState([]);
   const [region, setRegion] = useState("");
 
-  // This UseEffect fetches the countries from the api
-  useEffect(() => {
-    setHasFetched(true);
+  // This function fetches the countries from the api
+  function getCountries() {
     axios
       .get("https://restcountries.com/v3.1/independent?status=true")
       .then((res) => {
-        setAllCountries(res.data);
+        setAllCountries(res.data.slice(0, 50));
         setHasFetched(true);
       });
+  }
+
+  // This calls the function that gets the countries
+  useEffect(() => {
+    setHasFetched(true);
+    getCountries();
   }, []);
 
   // This useEffect updates the countries Array once the data has been fetched
   useEffect(() => {
     if (allCountries != "not found" && allCountries != null) {
       setCountriesArray((prevArr) => {
-        return allCountries.slice(0, 20).map((country, idx) => {
+        return allCountries.map((country, idx) => {
           return (
             <Country_card
               key={idx}
@@ -52,8 +57,20 @@ export default function Home() {
       axios
         .get(`https://restcountries.com/v3.1/name/${searchedCountry}`)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setAllCountries(res.data);
+
+          // This is an extra filter by region on the countries Array, so that a country that's not in a region will not be found when
+          // that region is selected
+          if (region != "") {
+            setAllCountries(
+              res.data.filter((country) => {
+                return country.region.includes(region);
+              })
+            );
+          }
+
+          // console.log(allCountries);
           setHasFetched(true);
         })
         .catch((err) => {
@@ -68,6 +85,7 @@ export default function Home() {
     let searchedRegion = e.target.textContent;
     if (searchedRegion == "Clear filters") {
       setRegion("");
+      getCountries();
       return;
     }
     setHasFetched(false);
@@ -76,10 +94,11 @@ export default function Home() {
       .get(`https://restcountries.com/v3.1/region/${searchedRegion}`)
       .then((res) => {
         setAllCountries(res.data);
+        // console.log(res.data)
         setHasFetched(true);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setAllCountries("not found");
         setHasFetched(true);
       });
@@ -96,7 +115,7 @@ export default function Home() {
           placeholder={`Search for a country ${
             region ? `in ${region}...` : "..."
           }`}
-          className="w-full h-fit max-w-[500px] p-3 bg-cardBg"
+          className="w-full h-fit max-w-[500px] p-3 bg-cardBg search-box"
         />
 
         <FilterCountry getRegion={handleRegion} />
@@ -108,7 +127,11 @@ export default function Home() {
           hasFetched ? "flex" : "hidden"
         } gap-20 justify-center items-center flex-wrap w-full font-nunito`}
       >
-        {(<p>loading</p> && countriesArray) || <p>Country not found</p>}
+        {countriesArray && countriesArray.length > 0 ? (
+          countriesArray
+        ) : (
+          <p className="text-3xl">Country not found</p>
+        )}
       </div>
 
       <div className={`${hasFetched ? "hidden" : "block"} loader-big`}></div>
