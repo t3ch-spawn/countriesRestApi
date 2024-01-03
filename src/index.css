@@ -1,17 +1,34 @@
-
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-
 }
 #root {
   display: flex;
   width: 100%;
   height: 100%;
   min-height: 100vh;
+}
 
+.slide-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsl(207, 26%, 17%);
+  transform-origin: bottom;
+  z-index: 35;
+}
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsl(209, 23%, 22%);
+  transform-origin: top;
+  z-index: 35;
 }

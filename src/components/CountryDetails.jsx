@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import Transition from "../Transition";
 
-export default function CountryDetails() {
+  function CountryDetails() {
   const { code } = useParams();
   const [hasFetched, setHasFetched] = useState(false);
   const [countryDeets, setCountryDeets] = useState(null);
@@ -44,22 +45,19 @@ export default function CountryDetails() {
     return Object.values(object).flatMap((value) => [value]);
   }
 
-  function cons() {
-    console.log();
-  }
+
 
   return (
-    <div className="w-full pb-[50px]">
+    <div  className="w-full pb-[50px]">
       <Header extraStyles="!fixed" />
       {countryDeets && (
         <div
-          className={`${hasFetched ? "opacity-1" : "opacity-0"} duration-300`}
+          className={`${hasFetched ? "opacity-1" : "opacity-0"} duration-300 -750:mt-[100px]`}
         >
           <div className="flex flex-col items-start px-20 -1000:px-8">
             {/* Back button */}
             <Link
               to={"/"}
-              onClick={cons}
               className="bg-cardBg px-4 py-1 w-fit mb-16 flex justify-center items-center gap-2"
             >
               <i className="fa-solid fa-arrow-left fa-beat-fade"></i>
@@ -78,7 +76,6 @@ export default function CountryDetails() {
               />
 
               <div className={`${hasLoaded ? "hidden" : "flex"} loader`}></div>
-
 
               <div className=" w-full max-w-[500px]">
                 <h1 className="text-3xl font-bold mb-8 -550:text-center">
@@ -154,3 +151,5 @@ export default function CountryDetails() {
     </div>
   );
 }
+
+export default Transition(CountryDetails)

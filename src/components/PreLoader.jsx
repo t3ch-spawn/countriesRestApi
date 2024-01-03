@@ -34,7 +34,7 @@ export default function PreLoader() {
             duration: 0.2,
           })
           .to(".preloader-container", {
-            height: 0,
+            scaleY: 0,
             duration: 0.5,
             onStart: () => {
               document.querySelector(".earth-element").classList.add("active");
@@ -58,7 +58,7 @@ export default function PreLoader() {
 
   return (
     <>
-      <div className="fixed w-full h-full z-40 top-0 bg-mainBg preloader-container flex flex-col justify-center items-center text-center">
+      <div className="fixed w-full h-full z-40 top-0 bg-mainBg preloader-container flex flex-col justify-center items-center text-center origin-top">
         <RiveComponent className="earth-element h-[60%] w-full " />
         <div className="overflow-hidden mb-[200px]">
           <h1 className="text-4xl -500:text-3xl heading translate-y-[100px] ">
@@ -66,7 +66,7 @@ export default function PreLoader() {
           </h1>
         </div>
       </div>
-      <div className="fixed w-full h-full z-30 top-0 bg-cardBg preloader-container"></div>
+      <div className="fixed w-full h-full z-30 top-0 bg-cardBg preloader-container origin-bottom"></div>
     </>
   );
 }

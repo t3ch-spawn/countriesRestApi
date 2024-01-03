@@ -4,8 +4,9 @@ import axios, { all } from "axios";
 import FilterCountry from "./FilterCountry";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import Transition from "../Transition";
 
-export default function Home() {
+function Home() {
   const [allCountries, setAllCountries] = useState(null);
   const [hasFetched, setHasFetched] = useState(false);
   const [countriesArray, setCountriesArray] = useState([]);
@@ -148,3 +149,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Transition(Home);
