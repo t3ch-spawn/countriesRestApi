@@ -3,6 +3,7 @@ import Country_card from "./Country_card";
 import axios, { all } from "axios";
 import FilterCountry from "./FilterCountry";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [allCountries, setAllCountries] = useState(null);
@@ -32,15 +33,16 @@ export default function Home() {
       setCountriesArray((prevArr) => {
         return allCountries.map((country, idx) => {
           return (
-            <Country_card
-              key={idx}
-              name={country.name.common}
-              population={country.population}
-              region={country.continents.join(", ")}
-              capital={country.capital}
-              flag={country.flags.png}
-              alt={country.flags.alt}
-            />
+            <Link to={`/countries/${country.cca2}`} key={idx}>
+              <Country_card
+                name={country.name.common}
+                population={country.population}
+                region={country.continents.join(", ")}
+                capital={country.capital}
+                flag={country.flags.png}
+                alt={country.flags.alt}
+              />
+            </Link>
           );
         });
       });
@@ -105,36 +107,44 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-center p-[40px] flex-wrap w-full">
-      {/* Div which houses the search box and filter dropdown */}
-      <div className="w-full flex justify-between items-center -750:flex-col -750:items-start -750:gap-4">
-        {/* Input text box that filters throught the countries */}
-        <input
-          type="text"
-          onInput={searchCountries}
-          placeholder={`Search for a country ${
-            region ? `in ${region}...` : "..."
-          }`}
-          className="w-full h-fit max-w-[500px] p-3 bg-cardBg search-box"
-        />
+    <div className="flex flex-col gap-8 justify-center items-center  w-full">
+      <Header />
 
-        <FilterCountry getRegion={handleRegion} />
+      <div className="flex flex-col gap-8 justify-center items-center p-[40px] -400:p-[20px] flex-wrap w-full">
+        {/* Div which houses the search box and filter dropdown */}
+        <div className="w-full flex justify-between items-center -750:flex-col -750:items-start -750:gap-4">
+          {/* Input text box that filters throught the countries */}
+          <div className="w-full flex relative">
+            <input
+              type="text"
+              onInput={searchCountries}
+              placeholder={`Search for a country ${
+                region ? `in ${region}...` : "..."
+              }`}
+              className="w-full h-fit max-w-[500px] p-3 bg-cardBg search-box  pl-[40px]"
+            />
+
+            <i className="absolute top-[17px] left-3 fa-solid fa-magnifying-glass fa-shake"></i>
+          </div>
+
+          <FilterCountry getRegion={handleRegion} />
+        </div>
+
+        {/* Div that contains the list of all the countries */}
+        <div
+          className={`${
+            hasFetched ? "grid" : "hidden"
+          } justify-center justify-items-center countries-container gap-16 items-start flex-wrap w-full font-nunito`}
+        >
+          {countriesArray && countriesArray.length > 0 ? (
+            countriesArray
+          ) : (
+            <p className="text-3xl">Country not found</p>
+          )}
+        </div>
+
+        <div className={`${hasFetched ? "hidden" : "block"} loader-big`}></div>
       </div>
-
-      {/* Div that contains the list of all the countries */}
-      <div
-        className={`${
-          hasFetched ? "flex" : "hidden"
-        } gap-20 justify-center items-center flex-wrap w-full font-nunito`}
-      >
-        {countriesArray && countriesArray.length > 0 ? (
-          countriesArray
-        ) : (
-          <p className="text-3xl">Country not found</p>
-        )}
-      </div>
-
-      <div className={`${hasFetched ? "hidden" : "block"} loader-big`}></div>
     </div>
   );
 }

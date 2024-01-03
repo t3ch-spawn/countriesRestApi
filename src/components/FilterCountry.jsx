@@ -19,7 +19,7 @@ export default function FilterCountry(props) {
       >
         <p>{mainText}</p>
 
-        <i className={` ${toggle ? "active" : ""} fa-solid fa-angle-down`}></i>
+        <i className={` ${toggle ? "active" : "fa-bounce"} fa-solid fa-angle-down `}></i>
       </div>
 
       <div

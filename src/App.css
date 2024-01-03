@@ -72,9 +72,21 @@
 
 .fa-angle-down {
   transform: rotate(0deg);
-  transition: 0.3s;
+  transition: 1s;
 }
 
 .fa-angle-down.active {
   transform: rotate(180deg);
+}
+
+.countries-container {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.main-details-container span {
+  color: white;
+}
+
+.card-details-container span {
+  color: white;
 }
