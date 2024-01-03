@@ -19,7 +19,7 @@ export default function (props) {
         alt={props.alt}
         onError={handleError}
       />
-      <div className={`${hasLoaded ? "hidden" : "flex"} loader`}></div>
+      <div className={`${hasLoaded ? "hidden" : "flex"} loader absolute left-[50%] translate-x-[-50%]`}></div>
 
       {/* div containig details of the country */}
       <div className="flex flex-col gap-2 p-8 text-subWords card-details-container">

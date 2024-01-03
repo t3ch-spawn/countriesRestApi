@@ -110,7 +110,7 @@ export default function Home() {
     <div className="flex flex-col gap-8 justify-center items-center  w-full">
       <Header />
 
-      <div className="flex flex-col gap-8 justify-center items-center p-[40px] -400:p-[20px] flex-wrap w-full">
+      <div className="flex flex-col gap-8 justify-center items-center p-[40px] -400:p-[20px] flex-wrap w-full mt-[100px]">
         {/* Div which houses the search box and filter dropdown */}
         <div className="w-full flex justify-between items-center -750:flex-col -750:items-start -750:gap-4">
           {/* Input text box that filters throught the countries */}

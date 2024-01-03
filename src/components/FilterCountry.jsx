@@ -19,7 +19,11 @@ export default function FilterCountry(props) {
       >
         <p>{mainText}</p>
 
-        <i className={` ${toggle ? "active" : "fa-bounce"} fa-solid fa-angle-down `}></i>
+        <i
+          className={` ${
+            toggle ? "active" : "fa-bounce"
+          } fa-solid fa-angle-down `}
+        ></i>
       </div>
 
       <div
@@ -36,6 +40,7 @@ export default function FilterCountry(props) {
                 props.getRegion(e);
                 setMainText(e.target.textContent);
                 handleToggle();
+                document.querySelector(".search-box").value = "";
               }}
             >
               {region}
