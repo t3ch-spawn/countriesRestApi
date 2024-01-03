@@ -66,7 +66,7 @@ export default function PreLoader() {
           </h1>
         </div>
       </div>
-      <div className="fixed w-full h-full z-30 top-0 bg-cardBg preloader-container origin-bottom"></div>
+      <div className="fixed w-full h-full z-30 top-0 bg-cardBg preloader-container origin-top"></div>
     </>
   );
 }
