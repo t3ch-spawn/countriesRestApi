@@ -97,4 +97,7 @@
   transition: 0.3s;
 }
 
-
+.preloader-container.active {
+  z-index: 10;
+  padding: 0;
+}

@@ -39,9 +39,15 @@ export default function PreLoader() {
             onStart: () => {
               document.querySelector(".earth-element").classList.add("active");
             },
-            zIndex: '10',
+            onComplete: () => {
+              document
+                .querySelectorAll(".preloader-container").forEach((loader)=>{
+                    loader.classList.add("active");
+                })
+                
+            },
             ease: "power4.out",
-            stagger: 0.3,
+            stagger: 0.5,
           });
       }
     },
@@ -51,10 +57,10 @@ export default function PreLoader() {
 
   return (
     <>
-      <div className="fixed w-full h-full z-40 top-0 bg-mainBg preloader-container flex flex-col justify-center items-center pb-[100px] text-center">
-        <RiveComponent className="earth-element h-[70%] w-full" />
-        <div className="overflow-hidden">
-          <h1 className="text-4xl heading translate-y-[100px]">
+      <div className="fixed w-full h-full z-40 top-0 bg-mainBg preloader-container flex flex-col justify-center items-center text-center">
+        <RiveComponent className="earth-element h-[60%] w-full " />
+        <div className="overflow-hidden mb-[200px]">
+          <h1 className="text-4xl -500:text-3xl heading translate-y-[100px] ">
             Where in the world?
           </h1>
         </div>
