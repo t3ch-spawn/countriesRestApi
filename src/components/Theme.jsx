@@ -39,8 +39,8 @@ export default function Theme() {
       onClick={ToggleTheme}
       className=" w-full max-w-[180px]  h-[50px] flex items-center relative"
     >
-      <RiveComponent className="w-[400%] h-[350%] mr-[20px]" />
-      <p className="font-bold absolute right-[-20px] top-[30px] translate-y-[-50%] mr-2">
+      <RiveComponent className="w-[400%] h-[350%] mr-[50px]" />
+      <p className="font-bold absolute right-[0px] top-[30px] translate-y-[-50%] mr-2">
         {theme === "dark" ? "Dark mode" : "Light mode"}
       </p>
     </button>
