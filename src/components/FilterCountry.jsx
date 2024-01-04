@@ -11,11 +11,11 @@ export default function FilterCountry(props) {
   }
   return (
     <div
-      className={`fixed -750:relative -750:right-0 right-10 gap-2 flex flex-col min-w-[150px] rounded-md text-sm`}
+      className={`fixed -750:relative -750:right-0 right-10 gap-2 flex flex-col min-w-[150px] rounded-md text-sm z-20 shadow-md`}
     >
       <div
         onClick={handleToggle}
-        className="bg-cardBg p-4 cursor-pointer flex justify-center items-center gap-3"
+        className="dark:bg-cardBg bg-lightCardBg p-4 cursor-pointer flex justify-center items-center gap-3"
       >
         <p>{mainText}</p>
 
@@ -27,14 +27,14 @@ export default function FilterCountry(props) {
       </div>
 
       <div
-        className={`bg-cardBg rounded-md py-4 flex flex-col gap-1 filter-drop absolute min-h-[180px] w-full top-[60px] ${
+        className={`dark:bg-cardBg bg-lightCardBg shadow-xl rounded-md py-4 flex flex-col gap-1 filter-drop absolute min-h-[180px] w-full top-[60px] ${
           toggle ? "" : "active"
         }`}
       >
         {regionArr.map((region, idx) => {
           return (
             <p
-              className="cursor-pointer px-2 py-2 hover:bg-mainBg bg-cardBg"
+              className="cursor-pointer px-2 py-2 hover:bg-mainBg bg-lightCardBg dark:bg-cardBg"
               key={idx}
               onClick={(e) => {
                 props.getRegion(e);
@@ -56,7 +56,7 @@ export default function FilterCountry(props) {
               props.getRegion(e);
               document.querySelector(".search-box").value = "";
             }}
-            className="cursor-pointer px-2 py-2 hover:bg-mainBg bg-cardBg text-[red]"
+            className="cursor-pointer px-2 py-2 hover:bg-mainBg bg-cardBg text-[red] shadow-md"
           >
             Clear filters
           </p>

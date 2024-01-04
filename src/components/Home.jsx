@@ -122,7 +122,7 @@ function Home() {
               placeholder={`Search for a country ${
                 region ? `in ${region}...` : "..."
               }`}
-              className="w-full h-fit max-w-[500px] p-3 bg-cardBg search-box  pl-[40px]"
+              className="w-full h-fit max-w-[500px] p-3 bg-lightCardBg shadow-md dark:bg-cardBg search-box  pl-[40px]"
             />
 
             <i className="absolute top-[17px] left-3 fa-solid fa-magnifying-glass fa-shake"></i>

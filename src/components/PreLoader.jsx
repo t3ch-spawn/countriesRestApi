@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import Rive from "@rive-app/react-canvas";
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
 import gsap from "gsap";
 import SplitType from "split-type";
 
 export default function PreLoader() {
   const { rive, RiveComponent } = useRive({
-    src: "/new_file.riv",
+    src: "/earth.riv",
     stateMachines: "earth-anim",
     autoplay: true,
     onStateChange: (e) => {

@@ -58,7 +58,7 @@ import Transition from "../Transition";
             {/* Back button */}
             <Link
               to={"/"}
-              className="bg-cardBg px-4 py-1 w-fit mb-16 flex justify-center items-center gap-2"
+              className="dark:bg-cardBg bg-lightCardBg px-4 py-1 w-fit mb-16 flex justify-center items-center gap-2"
             >
               <i className="fa-solid fa-arrow-left fa-beat-fade"></i>
               <p>Back</p>
@@ -83,7 +83,7 @@ import Transition from "../Transition";
                 </h1>
 
                 {/* Div which contains 2 divs that have the main details of the country */}
-                <div className="flex w-full gap-2 justify-between main-details-container text-subWords -550:text-center -550:flex-col">
+                <div className="flex w-full gap-2 justify-between main-details-container text-lightText dark:text-subWords -550:text-center -550:flex-col">
                   <div className="flex flex-col gap-2">
                     <p>
                       <span> Native Name</span>:
@@ -128,7 +128,7 @@ import Transition from "../Transition";
                     ? borderCountries.map((border, idx) => {
                         return (
                           <p
-                            className="bg-cardBg px-4 py-1 rounded-sm"
+                            className="dark:bg-cardBg bg-lightCardBg shadow-md px-4 py-1 rounded-sm"
                             key={idx}
                           >
                             {border}
