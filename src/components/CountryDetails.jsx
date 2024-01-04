@@ -5,7 +5,7 @@ import Header from "./Header";
 import { Link } from "react-router-dom";
 import Transition from "../Transition";
 
-  function CountryDetails() {
+function CountryDetails() {
   const { code } = useParams();
   const [hasFetched, setHasFetched] = useState(false);
   const [countryDeets, setCountryDeets] = useState(null);
@@ -15,7 +15,7 @@ import Transition from "../Transition";
 
   function handleImgLoading(e) {
     if (e.target.src) {
-      setHasLoaded(true);
+        setHasLoaded(true);
     }
   }
 
@@ -45,14 +45,14 @@ import Transition from "../Transition";
     return Object.values(object).flatMap((value) => [value]);
   }
 
-
-
   return (
-    <div  className="w-full pb-[50px]">
+    <div className="w-full pb-[50px]">
       <Header extraStyles="!fixed" />
       {countryDeets && (
         <div
-          className={`${hasFetched ? "opacity-1" : "opacity-0"} duration-300 -750:mt-[100px]`}
+          className={`${
+            hasFetched ? "opacity-1" : "opacity-0"
+          } duration-300 -750:mt-[100px]`}
         >
           <div className="flex flex-col items-start px-20 -1000:px-8">
             {/* Back button */}
@@ -66,17 +66,22 @@ import Transition from "../Transition";
 
             {/* Div that has the countries image and main details */}
             <div className="flex justify-between items-center w-full gap-6 -1000:flex-col">
-              <img
-                className={`${
-                  hasLoaded ? "block" : "hidden"
-                } max-w-[500px] w-[100%]`}
-                src={countryDeets.flags.svg}
-                alt=""
-                onLoad={handleImgLoading}
-              />
+              <div className="relative max-w-[500px] w-[100%]">
+                <img
+                  className={`${
+                    hasLoaded ? "block" : "hidden"
+                  } max-w-[500px] w-[100%]`}
+                  src={countryDeets.flags.svg}
+                  alt=""
+                  onLoad={handleImgLoading}
+                />
 
-              <div className={`${hasLoaded ? "hidden" : "flex"} loader`}></div>
-
+                <div
+                  className={`${
+                    hasLoaded ? "hidden" : "flex"
+                  } loader top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]`}
+                ></div>
+              </div>
               <div className=" w-full max-w-[500px]">
                 <h1 className="text-3xl font-bold mb-8 -550:text-center">
                   {countryDeets.name.common}
@@ -152,4 +157,4 @@ import Transition from "../Transition";
   );
 }
 
-export default Transition(CountryDetails)
+export default Transition(CountryDetails);

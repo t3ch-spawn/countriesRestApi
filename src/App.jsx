@@ -16,7 +16,7 @@ function App() {
   const location = useLocation();
   return (
     <div className="flex flex-col justify-center items-center w-full h-full text-lightText dark:text-white bg-lightBg dark:bg-mainBg min-h-[100vh] font-nunito">
-      <PreLoader />
+      {/* <PreLoader /> */}
       <Context.Provider value={[theme, setTheme]}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
