@@ -34,7 +34,7 @@ export default function FilterCountry(props) {
         {regionArr.map((region, idx) => {
           return (
             <p
-              className="cursor-pointer px-2 py-2 hover:bg-mainBg bg-lightCardBg dark:bg-cardBg"
+              className="cursor-pointer px-2 py-2 hover:bg-subWords dark:hover:bg-mainBg bg-lightCardBg dark:bg-cardBg"
               key={idx}
               onClick={(e) => {
                 props.getRegion(e);
@@ -56,7 +56,7 @@ export default function FilterCountry(props) {
               props.getRegion(e);
               document.querySelector(".search-box").value = "";
             }}
-            className="cursor-pointer px-2 py-2 hover:bg-mainBg bg-cardBg text-[red] shadow-md"
+            className="cursor-pointer px-2 py-2 hover:bg-subWords dark:hover:bg-mainBg bg-cardBg text-[red] shadow-md"
           >
             Clear filters
           </p>

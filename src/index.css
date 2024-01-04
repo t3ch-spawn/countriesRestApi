@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
 }
 
-.slide-in {
+.dark .slide-in {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,13 +22,34 @@ body {
   transform-origin: bottom;
   z-index: 40;
 }
-.slide-out {
+.dark .slide-out {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: hsl(209, 23%, 22%);
+  transform-origin: top;
+  z-index: 35;
+}
+
+.slide-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: gray;
+  transform-origin: bottom;
+  z-index: 40;
+}
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
   transform-origin: top;
   z-index: 35;
 }

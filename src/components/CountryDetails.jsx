@@ -58,7 +58,7 @@ import Transition from "../Transition";
             {/* Back button */}
             <Link
               to={"/"}
-              className="dark:bg-cardBg bg-lightCardBg px-4 py-1 w-fit mb-16 flex justify-center items-center gap-2"
+              className="dark:bg-cardBg bg-lightCardBg px-4 py-1 w-fit mb-16 flex justify-center items-center gap-2  shadow-md"
             >
               <i className="fa-solid fa-arrow-left fa-beat-fade"></i>
               <p>Back</p>

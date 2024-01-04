@@ -28,6 +28,12 @@ export default function Theme() {
     setTheme(theme === "dark" ? "light" : "dark");
   }
 
+  useEffect(() => {
+    if (fireInput && theme == "light") {
+      fireInput.fire();
+    }
+  }, [fireInput]);
+
   return (
     <button
       onClick={ToggleTheme}
