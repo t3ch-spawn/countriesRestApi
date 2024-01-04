@@ -1,8 +1,15 @@
-# React + Vite
+# Country Information App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# About
+This is a website which displays the list of countries in the world, by using data from the countries rest api. It has a search functionality and filter by region functionality
+Information about each country can be viewed when the corresponding card is clicked
 
-Currently, two official plugins are available:
+# Technologies
+I used React to build this application, along with Rive, for the loader and ligh/dark icon animations. 
+I also used gsap and framer motion for the page transitions
+And for styling, I used Tailwind Css
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Site link
+https://spawn-allcountries.netlify.app/
+
+
