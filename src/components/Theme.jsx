@@ -10,7 +10,7 @@ export default function Theme() {
     stateMachines: "dark-light",
     autoplay: true,
     onStateChange: (e) => {
-        console.log(e)
+      // console.log(e)
     },
   });
 
@@ -35,7 +35,7 @@ export default function Theme() {
     >
       <RiveComponent className="w-[400%] h-[350%] mr-[20px]" />
       <p className="font-bold absolute right-[-20px] top-[30px] translate-y-[-50%] mr-2">
-        {theme === "dark" ? "Dark mode" : "Light mode" }
+        {theme === "dark" ? "Dark mode" : "Light mode"}
       </p>
     </button>
   );

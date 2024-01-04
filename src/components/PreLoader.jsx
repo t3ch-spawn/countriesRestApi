@@ -10,7 +10,6 @@ export default function PreLoader() {
     autoplay: true,
     onStateChange: (e) => {
       const headingChars = new SplitType(".heading", { types: "words, chars" });
-      console.log(e);
 
       if (e.data[0] == "unknown") {
         gsap
