@@ -10,12 +10,13 @@ function CountryDetails() {
   const [hasFetched, setHasFetched] = useState(false);
   const [countryDeets, setCountryDeets] = useState(null);
   const [borderCountries, setBorderCountries] = useState([]);
+  const [urlArr, setUrlArr] = useState([]);
 
   const [hasLoaded, setHasLoaded] = useState(null);
 
   function handleImgLoading(e) {
     if (e.target.src) {
-        setHasLoaded(true);
+      setHasLoaded(true);
     }
   }
 
@@ -31,10 +32,17 @@ function CountryDetails() {
           .get(`https://restcountries.com/v3.1/alpha/${border}`)
           .then((country) => {
             if (borderCountries.length >= array.length) return;
+
+            // This array gets the names of the borders that'll show on the screen
             setBorderCountries((prevArr) => {
               return Array.from(
                 new Set([...prevArr, country.data[0].name.common])
               );
+            });
+
+            // This array gets the code for each individual border
+            setUrlArr((prevArr) => {
+              return Array.from(new Set([...prevArr, country.data[0].cca2]));
             });
           });
       });
@@ -132,12 +140,13 @@ function CountryDetails() {
                   {borderCountries.length > 0
                     ? borderCountries.map((border, idx) => {
                         return (
-                          <p
+                          <Link
+                            to={`/countries/${urlArr[idx]}`}
                             className="dark:bg-cardBg bg-lightCardBg shadow-md px-4 py-1 rounded-sm"
                             key={idx}
                           >
                             {border}
-                          </p>
+                          </Link>
                         );
                       })
                     : " No Borders"}
