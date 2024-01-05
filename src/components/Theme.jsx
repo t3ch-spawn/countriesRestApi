@@ -9,9 +9,6 @@ export default function Theme() {
     src: "/lightDark.riv",
     stateMachines: "dark-light",
     autoplay: true,
-    onStateChange: (e) => {
-      // console.log(e)
-    },
   });
 
   useEffect(() => {
@@ -23,16 +20,18 @@ export default function Theme() {
   }, [theme]);
 
   const fireInput = useStateMachineInput(rive, "dark-light", "toggle");
+  const isLight = useStateMachineInput(rive, "dark-light", "isLight");
   function ToggleTheme() {
-    fireInput.fire();
+    isLight.value = !isLight.value;
+    // fireInput.fire();
     setTheme(theme === "dark" ? "light" : "dark");
   }
 
   useEffect(() => {
-    if (fireInput && theme == "light") {
-      fireInput.fire();
+    if (isLight && theme == "light" && isLight.value == false) {
+      isLight.value = true;
     }
-  }, [fireInput]);
+  }, [fireInput, rive, isLight]);
 
   return (
     <button
