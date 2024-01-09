@@ -7,10 +7,25 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import CountryDetails from "./components/CountryDetails";
 import PreLoader from "./components/PreLoader";
 import { AnimatePresence } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
 
 export const Context = React.createContext();
 
 function App() {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    lenis.on("scroll", (e) => {
+      console.log(e);
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
   const [theme, setTheme] = useState("dark");
 
   const location = useLocation();
